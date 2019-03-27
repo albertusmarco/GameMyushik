@@ -36,6 +36,7 @@ class MainMenuScene: SKScene {
         if let button = startBtn {
             if nodes.contains(button) {
                 let gameScene = SKScene(fileNamed: "GameScene")
+                gameScene?.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene)
             }
         }

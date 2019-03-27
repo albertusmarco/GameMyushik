@@ -18,6 +18,8 @@ class GameScene: SKScene {
     let second = SKSpriteNode()
     let third = SKSpriteNode()
     
+    var currentScore:Int = 0
+    
     private var levelLabel : SKLabelNode?
     private var levelNumber : SKLabelNode?
     private var questionLabel : SKLabelNode?
@@ -66,23 +68,27 @@ class GameScene: SKScene {
         first.size = CGSize(width: 100, height: 100)
         first.name = "firstAnswer"
         first.position = CGPoint(x:-213,y:-198)
+        answerBox.zPosition = 0
         self.addChild(first)
         
         second.color = .blue
         second.size = CGSize(width: 100, height: 100)
         second.name = "secondAnswer"
         second.position = CGPoint(x:-2,y:-198)
+        answerBox.zPosition = 0
         self.addChild(second)
         
         third.color = .green
         third.size = CGSize(width: 100, height: 100)
         third.name = "thirdAnswer"
         third.position = CGPoint(x:213,y:-198)
+        answerBox.zPosition = 0
         self.addChild(third)
         
-        answerBox.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        answerBox.color =  .white
         answerBox.size = CGSize(width: 100, height: 100)
         answerBox.position = CGPoint(x: -0.8, y: -480)
+        answerBox.zPosition = -1
         addChild(answerBox)
     }
     
@@ -137,6 +143,8 @@ class GameScene: SKScene {
         if answerBox.frame.contains(first.position) {
             print("ANDA BENAR YEEAAH")
             //TODO: Update score, go to next level
+            currentScore += 1
+            bestScore.text = "Best Score: \(currentScore)"
             
         }
     }
