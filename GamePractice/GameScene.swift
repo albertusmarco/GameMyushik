@@ -53,7 +53,7 @@ class GameScene: SKScene {
         
         bestScore = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         bestScore.zPosition = 1
-        bestScore.position = CGPoint(x: 0, y: (frame.size.height / -2))
+        bestScore.position = CGPoint(x: 0, y: (frame.size.height / -2) + 50)
         bestScore.fontSize = 40
         bestScore.text = "Best Score: 0"
         bestScore.fontColor = SKColor.black
