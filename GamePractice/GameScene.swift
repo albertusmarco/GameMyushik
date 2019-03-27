@@ -12,13 +12,17 @@ import GameplayKit
 class GameScene: SKScene {
     
     private var currentNode: SKNode?
+    private var status: Bool?
+    private var statusgame: Bool?
     let timer = CountdownLabel()
     
     override func didMove(to view: SKView) {
+        statusgame = true
+        
         timer.position = CGPoint(x:5,y:274)
         timer.fontSize = 65
         addChild(timer)
-        timer.startWithDuration(duration: 50)
+        timer.startWithDuration(duration: 10)
         
         let first = SKSpriteNode(
             color: .red,
@@ -92,9 +96,13 @@ class GameScene: SKScene {
         
     }
     
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        timer.update()
+        if (statusgame == true) {
+            if (timer.update()) {
+                print("game end")
+                statusgame = false
+            }
+        }
     }
 }

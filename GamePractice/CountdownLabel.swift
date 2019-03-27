@@ -10,20 +10,25 @@ import SpriteKit
 class CountdownLabel: SKLabelNode {
     var endTime:Date!
     
-    
-    func update(){
+    func update()->Bool{
         let timeLeftInteger = Int(timeLeft())
         text = String(timeLeftInteger)
+        if (hasFinished()){
+            return true
+        }
+        return false
     }
     
     func startWithDuration(duration: TimeInterval){
         let timeNow = Date()
         endTime = timeNow.addingTimeInterval(duration)
+        
     }
     
     func hasFinished() -> Bool{
         return timeLeft() == 0
     }
+    
     
     private func timeLeft() -> TimeInterval{
         let now = Date();
