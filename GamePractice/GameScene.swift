@@ -16,6 +16,10 @@ class GameScene: SKScene {
     var bestScore:SKLabelNode!
     var playButton: SKShapeNode!
     
+    let answerBox = SKSpriteNode()
+    let first = SKSpriteNode()
+    let second = SKSpriteNode()
+    let third = SKSpriteNode()
 //    var game: GameManager!
     
     override func didMove(to view: SKView) {
@@ -104,37 +108,42 @@ class GameScene: SKScene {
         addChild(timer)
         timer.startWithDuration(duration: 10)
         
-        let first = SKSpriteNode(
-            color: .red,
-            size: CGSize(width: 100, height: 100)
-        )
+        first.color = .red
+        first.size = CGSize(width: 100, height: 100)
         first.name = "firstAnswer"
         first.position = CGPoint(x:-213,y:-198)
         self.addChild(first)
         
-        let second = SKSpriteNode(
-            color: .blue,
-            size: CGSize(width: 100, height: 100)
-        )
+        second.color = .blue
+        second.size = CGSize(width: 100, height: 100)
         second.name = "secondAnswer"
         second.position = CGPoint(x:-2,y:-198)
         self.addChild(second)
         
-        let third = SKSpriteNode(
-            color: .green,
-            size: CGSize(width: 100, height: 100)
-        )
+        third.color = .green
+        third.size = CGSize(width: 100, height: 100)
         third.name = "thirdAnswer"
         third.position = CGPoint(x:213,y:-198)
         self.addChild(third)
+        
+        answerBox.color = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        answerBox.size = CGSize(width: 100, height: 100)
+        answerBox.position = CGPoint(x: -0.8, y: -480)
+        addChild(answerBox)
     }
     
     func touchDown(atPoint pos : CGPoint) {
         
     }
     
-    func touchMoved(toPoint pos : CGPoint) {
+    func touchMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //Get a Touch
+        let touch = touches.first!
         
+        //If It started in the label, move to the new location
+        if first.frame.contains(touch.previousLocation(in: self)){
+            first.position = touch.location(in: self)
+        }
     }
     
     func touchUp(atPoint pos : CGPoint) {
@@ -180,7 +189,13 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.currentNode = nil
+        
+        //If touch the answer box, score up
+        if answerBox.frame.contains(first.position) {
+            print("ANDA BENAR YEEAAH")
+            //TODO: Update score, go to next level
+            
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
