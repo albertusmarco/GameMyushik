@@ -18,6 +18,7 @@
 		1D191A53224A17340067DC87 /* GamePracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D191A52224A17340067DC87 /* GamePracticeTests.swift */; };
 		1D191A5E224A17340067DC87 /* GamePracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D191A5D224A17340067DC87 /* GamePracticeUITests.swift */; };
 		1DBFA050224A33D500BCAD39 /* CountdownLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBFA04F224A33D500BCAD39 /* CountdownLabel.swift */; };
+		C06DECBC224B5567007D8D01 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DECBB224B5567007D8D01 /* GameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1D191A5D224A17340067DC87 /* GamePracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePracticeUITests.swift; sourceTree = "<group>"; };
 		1D191A5F224A17340067DC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBFA04F224A33D500BCAD39 /* CountdownLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownLabel.swift; sourceTree = "<group>"; };
+		C06DECBB224B5567007D8D01 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				1D191A46224A17330067DC87 /* LaunchScreen.storyboard */,
 				1D191A49224A17330067DC87 /* Info.plist */,
 				1DBFA04F224A33D500BCAD39 /* CountdownLabel.swift */,
+				C06DECBB224B5567007D8D01 /* GameManager.swift */,
 			);
 			path = GamePractice;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				1D191A3E224A17330067DC87 /* GameScene.swift in Sources */,
 				1D191A40224A17330067DC87 /* GameViewController.swift in Sources */,
 				1D191A38224A17330067DC87 /* AppDelegate.swift in Sources */,
+				C06DECBC224B5567007D8D01 /* GameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
