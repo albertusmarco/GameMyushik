@@ -31,7 +31,9 @@ class GameScene: SKScene {
             self.gameLogo1.isHidden = true
         }
         
-        gameLogo2.run(SKAction.move(by: CGVector(dx: 0, dy: 300), duration: 0.6))
+        gameLogo2.run(SKAction.move(by: CGVector(dx: 0, dy: 300), duration: 0.6)) {
+            self.gameLogo2.isHidden = true
+        }
         
         playButton.run(SKAction.scale(to: 0, duration: 0.3)) {
             self.playButton.isHidden = true
@@ -88,14 +90,13 @@ class GameScene: SKScene {
         self.addChild(playButton)
     }
     
-    
-    
     private var currentNode: SKNode?
     private var status: Bool?
     private var statusgame: Bool?
     let timer = CountdownLabel()
     
     private func initGameView(){
+        self.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)
         statusgame = true
         
         timer.position = CGPoint(x:5,y:274)
