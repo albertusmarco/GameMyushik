@@ -22,6 +22,8 @@ class MainMenuScene: SKScene {
         bestScoreLabel = self.childNode(withName: "label_best_score") as? SKLabelNode
         scoreLabel = self.childNode(withName: "value_score") as? SKLabelNode
         startBtn = self.childNode(withName: "btn_play") as? SKSpriteNode
+        scoreLabel?.text = String(GameScene().currentScore)
+        print(GameScene().currentScore)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
