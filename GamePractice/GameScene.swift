@@ -157,16 +157,28 @@ class GameScene: SKScene {
             print("ANDA SALAH YEEAAH")
             //update score
             currentScore -= 1
-            playerScore.text = "Your Score: \(currentScore)"
-
+            if currentScore < 0 {
+                currentScore = 0
+                playerScore.text = "Your Score: \(currentScore)"
+            }
+            else {
+                playerScore.text = "Your Score: \(currentScore)"
+            }
         }
         else if answerBox.frame.contains(third.position) {
             print("ANDA SALAH YEEAAH")
             //update score
             currentScore -= 1
-            playerScore.text = "Your Score: \(currentScore)"
+            if currentScore < 0 {
+                currentScore = 0
+                playerScore.text = "Your Score: \(currentScore)"
+            }
+            else {
+                playerScore.text = "Your Score: \(currentScore)"
+            }
 
         }
+        
         //restart position
         first.position = CGPoint(x:-213,y:-198)
         second.position = CGPoint(x:-2,y:-198)
