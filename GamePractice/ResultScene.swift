@@ -10,21 +10,40 @@ import SpriteKit
 import GameplayKit
 
 class ResultScene: SKScene{
-    var bestScore:SKLabelNode!
+    var bestScoreLabel:SKLabelNode!
     var currentScore:Int = 0
     var startBtn: SKSpriteNode?
+    var currentScoreLabel: SKLabelNode?
+    var bestScore: Int?
     
     override func didMove(to view: SKView) {
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         startBtn = self.childNode(withName: "btn_play") as? SKSpriteNode
+        currentScoreLabel = self.childNode(withName: "scoreNumber") as? SKLabelNode
         
-        bestScore = SKLabelNode(fontNamed: "ArialRoundedMTBold")
-        bestScore.zPosition = 1
-        bestScore.position = CGPoint(x: 0, y: (frame.size.height / -2) + 50)
-        bestScore.fontSize = 40
-        bestScore.text = "Best Score: 0"
-        bestScore.fontColor = SKColor.black
-        self.addChild(bestScore)
+        
+        currentScore = UserDefaults.standard.integer(forKey: "currentScore")
+        
+        currentScoreLabel?.text = String(currentScore)
+        
+        print("current score: \(currentScore)")
+        bestScore = UserDefaults.standard.integer(forKey: "bestScore")
+        
+        //Tambah UserDefaults ke UserDefaults; key: bestScore
+        if  currentScore > bestScore ?? 0{
+                UserDefaults.standard.set(currentScore, forKey: "bestScore")
+                bestScore = currentScore
+            }
+        
+        print("best: \(bestScore!)")
+        
+        bestScoreLabel = SKLabelNode(fontNamed: "ArialRoundedMTBold")
+        bestScoreLabel.zPosition = 1
+        bestScoreLabel.position = CGPoint(x: 0, y: (frame.size.height / -2) + 50)
+        bestScoreLabel.fontSize = 40
+        bestScoreLabel.text = "Best Score: \(bestScore!)"
+        bestScoreLabel.fontColor = SKColor.black
+        self.addChild(bestScoreLabel)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

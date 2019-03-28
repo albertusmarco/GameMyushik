@@ -179,6 +179,9 @@ class GameScene: SKScene {
 
         }
         
+        //Set Current Score to UserDefaults
+        UserDefaults.standard.set(currentScore, forKey: "currentScore")
+        
         //restart position
         first.position = CGPoint(x:-213,y:-198)
         second.position = CGPoint(x:-2,y:-198)
