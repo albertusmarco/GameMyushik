@@ -145,11 +145,6 @@ class GameScene: SKScene {
             currentScore += 1
             bestScore.text = "Best Score: \(currentScore)"
             
-            //restart position
-            first.position = CGPoint(x:-213,y:-198)
-            second.position = CGPoint(x:-2,y:-198)
-            third.position = CGPoint(x:213,y:-198)
-            
             //up level
             var level = Int(levelNumber!.text!)
             level = level! + 1
@@ -163,11 +158,7 @@ class GameScene: SKScene {
             //update score
             currentScore -= 1
             bestScore.text = "Best Score: \(currentScore)"
-            
-            //restart position
-            first.position = CGPoint(x:-213,y:-198)
-            second.position = CGPoint(x:-2,y:-198)
-            third.position = CGPoint(x:213,y:-198)
+        
         }
         else if answerBox.frame.contains(third.position) {
             print("ANDA SALAH YEEAAH")
@@ -175,11 +166,11 @@ class GameScene: SKScene {
             currentScore -= 1
             bestScore.text = "Best Score: \(currentScore)"
             
-            //restart position
-            first.position = CGPoint(x:-213,y:-198)
-            second.position = CGPoint(x:-2,y:-198)
-            third.position = CGPoint(x:213,y:-198)
         }
+        //restart position
+        first.position = CGPoint(x:-213,y:-198)
+        second.position = CGPoint(x:-2,y:-198)
+        third.position = CGPoint(x:213,y:-198)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
