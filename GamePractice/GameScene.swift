@@ -138,14 +138,33 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        //If touch the answer box, score up
+        //If touch the answer box
         if answerBox.frame.contains(first.position) {
             print("ANDA BENAR YEEAAH")
             //TODO: Update score, go to next level
             currentScore += 1
             bestScore.text = "Best Score: \(currentScore)"
+            first.position = CGPoint(x:-213,y:-198)
             
+            //up level
+            var level = Int(levelNumber!.text!)
+            level = level! + 1
+            levelNumber?.text = String(level!)
+            
+            //restart timer
+            timer.startWithDuration(duration: 10)
+        }
+        else if answerBox.frame.contains(second.position) {
+            print("ANDA SALAH YEEAAH")
+            currentScore -= 1
+            bestScore.text = "Best Score: \(currentScore)"
+            second.position = CGPoint(x:-2,y:-198)
+        }
+        else if answerBox.frame.contains(third.position) {
+            print("ANDA SALAH YEEAAH")
+            currentScore -= 1
+            bestScore.text = "Best Score: \(currentScore)"
+            third.position = CGPoint(x:213,y:-198)
         }
     }
     
@@ -159,6 +178,9 @@ class GameScene: SKScene {
             if (timer.update()) {
                 print("game end")
                 statusgame = false
+                let mainMenuScene = SKScene(fileNamed: "MainMenuScene")
+                mainMenuScene?.scaleMode = .aspectFill
+                self.view?.presentScene(mainMenuScene)
             }
         }
     }
