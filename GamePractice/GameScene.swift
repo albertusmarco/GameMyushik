@@ -157,7 +157,7 @@ class GameScene: SKScene {
             print("ANDA SALAH YEEAAH")
             //update score
             currentScore -= 1
-            bestScore.text = "Best Score: \(currentScore)"
+            playerScore.text = "Your Score: \(currentScore)"
 
         }
         else if answerBox.frame.contains(third.position) {
