@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
 
-    var bestScore:SKLabelNode!
+    var playerScore:SKLabelNode!
     
     let answerBox = SKSpriteNode()
     let first = SKSpriteNode()
@@ -51,13 +51,13 @@ class GameScene: SKScene {
         self.backgroundColor = #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)
         statusgame = true
         
-        bestScore = SKLabelNode(fontNamed: "ArialRoundedMTBold")
-        bestScore.zPosition = 1
-        bestScore.position = CGPoint(x: 0, y: (frame.size.height / -2) + 50)
-        bestScore.fontSize = 40
-        bestScore.text = "Best Score: 0"
-        bestScore.fontColor = SKColor.black
-        self.addChild(bestScore)
+        playerScore = SKLabelNode(fontNamed: "ArialRoundedMTBold")
+        playerScore.zPosition = 1
+        playerScore.position = CGPoint(x: 0, y: (frame.size.height / -2) + 50)
+        playerScore.fontSize = 40
+        playerScore.text = "Your Score: 0"
+        playerScore.fontColor = SKColor.black
+        self.addChild(playerScore)
         
         timer.position = CGPoint(x:5,y:274)
         timer.fontSize = 65
@@ -143,7 +143,7 @@ class GameScene: SKScene {
             print("ANDA BENAR YEEAAH")
             //update score
             currentScore += 1
-            bestScore.text = "Best Score: \(currentScore)"
+            playerScore.text = "Your Score: \(currentScore)"
             
             //restart position
             first.position = CGPoint(x:-213,y:-198)
@@ -162,7 +162,7 @@ class GameScene: SKScene {
             print("ANDA SALAH YEEAAH")
             //update score
             currentScore -= 1
-            bestScore.text = "Best Score: \(currentScore)"
+            playerScore.text = "Your Score: \(currentScore)"
             
             //restart position
             first.position = CGPoint(x:-213,y:-198)
@@ -173,7 +173,7 @@ class GameScene: SKScene {
             print("ANDA SALAH YEEAAH")
             //update score
             currentScore -= 1
-            bestScore.text = "Best Score: \(currentScore)"
+            playerScore.text = "Your Score: \(currentScore)"
             
             //restart position
             first.position = CGPoint(x:-213,y:-198)
@@ -192,9 +192,9 @@ class GameScene: SKScene {
             if (timer.update()) {
                 print("game end")
                 statusgame = false
-                let mainMenuScene = SKScene(fileNamed: "MainMenuScene")
-                mainMenuScene?.scaleMode = .aspectFill
-                self.view?.presentScene(mainMenuScene)
+                let resultScene = SKScene(fileNamed: "ResultScene")
+                resultScene?.scaleMode = .aspectFill
+                self.view?.presentScene(resultScene)
             }
         }
     }
