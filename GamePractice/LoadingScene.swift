@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class OnboardScene: SKScene {
+class LoadingScene: SKScene {
     let timer = CountdownLabel()
     var statusgame: Bool?
     var mainGuy = SKSpriteNode()
@@ -17,7 +17,7 @@ class OnboardScene: SKScene {
     var TextureArray = [SKTexture]()
     
     override func didMove(to view: SKView) {
-        TextureAtlas = SKTextureAtlas(named: "onboard")
+        TextureAtlas = SKTextureAtlas(named: "loading")
         
         for i in 1...TextureAtlas.textureNames.count {
             let name = "\(i).png"
@@ -29,7 +29,7 @@ class OnboardScene: SKScene {
         mainGuy.size = CGSize(width: 750, height: 1334)
         mainGuy.position = CGPoint(x: 0, y: 0)
         self.addChild(mainGuy)
-        mainGuy.run(SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.2)))
+        mainGuy.run(SKAction.repeatForever(SKAction.animate(with: TextureArray, timePerFrame: 0.1)))
         
         statusgame = true
         addChild(timer)
@@ -42,9 +42,9 @@ class OnboardScene: SKScene {
             if (timer.update()) {
                 print("game end")
                 statusgame = false
-                let mainMenuScene = SKScene(fileNamed: "MainMenuScene")
-                mainMenuScene?.scaleMode = .aspectFill
-                self.view?.presentScene(mainMenuScene)
+                let gameScene = SKScene(fileNamed: "GameScene")
+                gameScene?.scaleMode = .aspectFill
+                self.view?.presentScene(gameScene)
             }
         }
     }
