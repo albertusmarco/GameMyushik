@@ -27,18 +27,18 @@ class MainMenuScene: SKScene {
     
     override func didMove(to view: SKView) {
         TextureAtlas = SKTextureAtlas(named: "seq")
-        
+
         for i in 1...TextureAtlas.textureNames.count {
             let name = "\(i).png"
             TextureArray.append(SKTexture(imageNamed: name))
             print(name)
         }
         
-//        mainGuy = SKSpriteNode(imageNamed: TextureAtlas.textureNames[0])
-//
-//        mainGuy.size = CGSize(width: 70, height: 140)
-//        mainGuy.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-//        self.addChild(mainGuy)
+        mainGuy = SKSpriteNode(imageNamed: TextureAtlas.textureNames[0])
+
+        mainGuy.size = CGSize(width: 70, height: 140)
+        mainGuy.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.addChild(mainGuy)
         
         background = self.childNode(withName: "background") as? SKSpriteNode
         background = SKSpriteNode(imageNamed: TextureAtlas.textureNames[0])
